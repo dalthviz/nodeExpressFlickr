@@ -1,8 +1,39 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Buscador from './components/buscador';
+import axios from 'axios';
 
 class App extends Component {
+
+  constructor(props) {
+      super(props);
+
+      this.state = {
+        imagenesAzul: [],
+        imagenesAmarillo: [],
+        imagenesRojo: [],
+        imagenesVerde: [],
+        imagenesVioleta: [],
+        imagenesNaranja: [],
+
+      }
+    }
+
+
+    buscarImagenes(term, callback) {
+      axios.get("http://localhost:9000/flickr/"+term+" blue")
+      .then(function(response) {
+        if(response.statusText === 'OK') {
+          callback({imagenesAzul : response.data.photos.photo});
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .catch(function(error) {
+        console.log('There has been a problem with your fetch operation: ' + error.message);
+      });
+    }
+
   render() {
     return (
       <div className="App">
@@ -11,8 +42,8 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+          <Buscador buscarImagenes={this.buscarImagenes} />
       </div>
     );
   }

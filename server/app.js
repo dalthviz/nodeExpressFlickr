@@ -4,9 +4,12 @@ const morgan = require('morgan');
 const path = require('path');
 const flickr = require("flickrapi");
 const fs = require("fs");
+const cors = require('cors');
 
 const app = express();
 
+
+app.use(cors());
 // Assumes that there are two files containing the keys
 // $PROJECT_HOME/server/api_key.txt
 // $PROJECT_HOME/server/api_secret.txt
@@ -21,7 +24,7 @@ function getApiKeys(callback, errorcallback) {
 				errorcallback(err);
 				return;
 			}
-			callback(api_key, api_secret);
+			callback(api_key.trim(), api_secret.trim());
 		});
 	});
 }

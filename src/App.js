@@ -27,7 +27,7 @@ class App extends Component {
 
 
     buscarImagenes = (term) => {
-      axios.get("http://localhost:9000/flickr/"+term+",blue")
+      axios.get("flickr/"+term+",blue")
       .then((response) => {
         if(response.statusText === 'OK') {
           this.setState({blue : response.data.photos.photo});
@@ -39,7 +39,7 @@ class App extends Component {
         console.log('There has been a problem with your fetch operation: ' + error.message);
       });
 
-      axios.get("http://localhost:9000/flickr/"+term+",yellow")
+      axios.get("flickr/"+term+",yellow")
       .then((response) => {
         if(response.statusText === 'OK') {
           this.setState({yellow : response.data.photos.photo});
@@ -51,7 +51,7 @@ class App extends Component {
         console.log('There has been a problem with your fetch operation: ' + error.message);
       });
 
-      axios.get("http://localhost:9000/flickr/"+term+",red")
+      axios.get("flickr/"+term+",red")
       .then((response) => {
         if(response.statusText === 'OK') {
           this.setState({red : response.data.photos.photo});
@@ -63,7 +63,7 @@ class App extends Component {
         console.log('There has been a problem with your fetch operation: ' + error.message);
       });
 
-      axios.get("http://localhost:9000/flickr/"+term+",green")
+      axios.get("flickr/"+term+",green")
       .then((response) => {
         if(response.statusText === 'OK') {
           this.setState({green : response.data.photos.photo});
@@ -75,7 +75,7 @@ class App extends Component {
         console.log('There has been a problem with your fetch operation: ' + error.message);
       });
 
-      axios.get("http://localhost:9000/flickr/"+term+",violet")
+      axios.get("flickr/"+term+",violet")
       .then((response) => {
         if(response.statusText === 'OK') {
           this.setState({violet : response.data.photos.photo});
@@ -87,7 +87,7 @@ class App extends Component {
         console.log('There has been a problem with your fetch operation: ' + error.message);
       });
 
-      axios.get("http://localhost:9000/flickr/"+term+",indigo")
+      axios.get("flickr/"+term+",indigo")
       .then((response) => {
         if(response.statusText === 'OK') {
           this.setState({indigo : response.data.photos.photo});
@@ -107,7 +107,7 @@ class App extends Component {
     agregarComentario = (comentario) => {
       //this.setState({show:'hidden'});
       var id_foto = this.state.foto.id;
-      axios.post("http://localhost:9000/comentarios",
+      axios.post("comentarios",
                 {comentario: comentario, id_foto: id_foto})
       .then(response => {
         this.obtenerComentarios();
@@ -118,7 +118,7 @@ class App extends Component {
 
     obtenerComentarios = () => {
         var id_foto = this.state.foto.id;
-        axios.get("http://localhost:9000/fotos/"+id_foto+"/comentarios")
+        axios.get("fotos/"+id_foto+"/comentarios")
         .then(response => {
             this.setState({comentarios: response.data});
           }).catch(err => {

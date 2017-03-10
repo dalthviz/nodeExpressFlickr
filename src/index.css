@@ -3,3 +3,29 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.columna{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.comentario-container {
+ border: 1px solid #058ceb;
+   border-radius: 10px;
+   padding: 15px;
+   background-color: white;
+   box-shadow: 0px 12px 54px grey;
+   margin-top: 47px;
+}
+
+.comentario-container h3{
+ margin-top: 0;
+ margin-bottom: 30px;
+}
+
+.comentario-container input, .comentario-container textarea {
+ width: 100%;
+ border-radius: 5px;
+ border: 1px solid #7d82ba;
+   padding: 3px;
+}

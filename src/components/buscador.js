@@ -8,16 +8,24 @@ class Buscador extends Component {
     }
   }
 
-  buscar(termino) {
+  buscar = (e) => {
+    e.preventDefault();
+    this.props.buscarImagenes(this.state.term);
+  }
+
+  actualizar = (termino) => {
     this.setState({term: termino});
-    this.props.buscarImagenes(termino);
+
   }
 
 
   render() {
     return(
       <div className="col-md-12 buscador">
-        <input type="text" onChange={(event) => this.buscar(event.target.value)}/>
+        <input type="text" onChange={(event) => this.actualizar(event.target.value)}/>
+        <button onClick={(event) => {this.buscar(event)}}>
+          Buscar
+        </button>
       </div>
     )
   }

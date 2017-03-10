@@ -11,7 +11,10 @@
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2",
     "axios": "^0.15.3",
-    "cors": "^2.8.1"
+    "cors": "^2.8.1",
+    "mongodb": "^2.2.24",
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3"
   },
   "devDependencies": {
     "react-scripts": "0.9.4"
